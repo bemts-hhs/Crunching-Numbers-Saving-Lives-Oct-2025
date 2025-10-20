@@ -1,5 +1,6 @@
 ---
 title: "Crunching Numbers, Saving Lives"
+subtitle: "The NEMSQA Measures"
 author: "Nicolas Foss, Ed.D., MS"
 date: "2025-10-20"
 format: 
@@ -29,7 +30,8 @@ execute:
   include: false
 ---
 
-# Objectives
+# Objectives 
+<!-- meeting objectives -->
 
 Today we will look at... 
  
@@ -41,9 +43,12 @@ Today we will look at...
 ::: {.notes}
 
 Make sure to mention that we are looking at aggregate data from 2021-2024.
+Note that we do have county-specific and district-level performance data, but we will not have time to do it all today.
+Those data can be obtained upon request.
 
 :::
 
+<!-- explain how to access the presentation -->
 # Accessing this presentation
 
 ![](figures/qrcode.svg){fig-align="center" fig-alt="QR Code for the slides to this presentation."}
@@ -54,6 +59,30 @@ We used nemsqar to generate the statistics for this presentation
 You can access the slides directly from the link above 
 Feel free to take a look at the slideshow while we are here!
 :::
+
+<!-- introduce NEMSQA -->
+# NEMSQA, what?
+ 
+- National EMS Quality Alliance
+  - **In 2014**, NHTSA funded the EMS Compass Project (led by NASEMSO) to develop and test EMS performance measures. Uptake was limited, but it established key groundwork.
+  - **NHTSA and HRSA** later supported the creation of the National EMS Quality Alliance (NEMSQA), initially facilitated by the American College of Emergency Physicians.
+
+# NEMSQA, what?
+**NEMSQA** is now an independent, non-governmental organization serving as the national steward for **EMS quality measures**.
+
+> The Iowa Department of Health and Human Services recognizes NEMSQA’s foundational role in shaping EMS quality assessment.
+
+<!-- review the core function of NEMSQA -->
+# NEMSQA Measures
+A **key feature** of NEMSQA has to do with the **creation of quality measures** that can be thought of as national standards vetted by the community of practitioners versus a government entity.
+
+# NEMSQA Measures
+ 
+- NEMSQA uses a **structured, lifecycle-based** process to develop and maintain EMS quality measures.
+- Process ensures measures evolve with:
+  - New **clinical evidence**
+  - Changing **system capabilities**
+  - Emerging **stakeholder needs**
 
 <!-- Setup -->
 
@@ -77,6 +106,7 @@ population <- Sys.getenv("population_extension")
 source("R/setup.R")
 ```
 
+<!-- introduce sections that resulted in positive performance -->
 # Achievements
 Here, we will review: 
  
@@ -92,9 +122,12 @@ Here, we will review:
 - Trauma-01 (Pain Assessment in Trauma Patients) 
 - Trauma-03 (Pain Reduction Achieved) 
 
+## Airway-18
+This process measure tracks the use of waveform capnography for confirming and monitoring advanced airway placement. 
+
 ```{r airway_18_load_results_data}
 
-#| label: airway_01_load_results_data
+#| label: airway_18_load_results_data
 
 airway_18_results <- import_nemsqa_result(measure = "Airway-18", type = "r")
 
@@ -103,13 +136,13 @@ airway_18_results <- import_nemsqa_result(measure = "Airway-18", type = "r")
 
 ```{r airway_18_table}
 
-#| label: airway_01_tables
+#| label: airway_18_tables
 
-# create the airway-01 results table
+# create the airway-18 results table
 airway_18_results_gt <- airway_18_results |>
   format_gt()
 
-# save the airway-01 results table
+# save the airway-18 results table
 gt::gtsave(
   data = airway_18_results_gt,
   filename = "airway_18_results_gt.png",
@@ -120,10 +153,7 @@ gt::gtsave(
 
 ```
 
-## Airway-18
-This process measure tracks the use of waveform capnography for confirming and monitoring advanced airway placement. 
-
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -131,9 +161,12 @@ Iowa’s EMS use of waveform capnography for advanced airway confirmation from 2
 
 :::
 
+## Asthma-01
+This process measure monitors the administration of aerosolized beta agonists during EMS responses for patients diagnosed with asthma. 
+
 ```{r asthma_01_load_results_data}
 
-#| label: airway_01_load_results_data
+#| label: asthma_01_load_results_data
 
 asthma_01_results <- import_nemsqa_result(measure = "Asthma-01", type = "r")
 
@@ -142,13 +175,13 @@ asthma_01_results <- import_nemsqa_result(measure = "Asthma-01", type = "r")
 
 ```{r asthma_01_table}
 
-#| label: airway_01_tables
+#| label: asthma_01_tables
 
-# create the airway-01 results table
+# create the asthmna-01 results table
 asthma_01_results_gt <- asthma_01_results |>
   format_gt()
 
-# save the airway-01 results table
+# save the asthma-01 results table
 gt::gtsave(
   data = asthma_01_results_gt,
   filename = "asthma_01_results_gt.png",
@@ -159,10 +192,7 @@ gt::gtsave(
 
 ```
 
-## Asthma-01
-This process measure monitors the administration of aerosolized beta agonists during EMS responses for patients diagnosed with asthma. 
-
-![](figures/asthma_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Asthma-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+![](figures/asthma_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Asthma-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -173,7 +203,38 @@ From 2021 to 2024, Iowa’s EMS administered aerosolized beta agonists to 56.4% 
 ## Hypoglycemia-01
 This measure captures the percentage of patients with symptomatic hypoglycemia who receive corrective treatment.
 
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r hypoglycemia_01_load_results_data}
+
+#| label: hypoglycemia_01_load_results_data
+
+hypoglycemia_01_results <- import_nemsqa_result(
+  measure = "Hypoglycemia-01",
+  type = "r"
+)
+
+
+```
+
+```{r hypoglycemia_01_table}
+
+#| label: hypoglycemia_01_tables
+
+# create the hypoglycemia-01 results table
+hypoglycemia_01_results_gt <- hypoglycemia_01_results |>
+  format_gt()
+
+# save the hypoglycemia-01 results table
+gt::gtsave(
+  data = hypoglycemia_01_results_gt,
+  filename = "hypoglycemia_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/hypoglycemia_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Hypoglycemia-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -184,7 +245,38 @@ From 2021 to 2024, 62.3% (95% CI: 61.3%, 63.2%) of Iowa EMS patients with sympto
 ## Safety-01
 This measure captures the percentage of EMS responses where lights and sirens were not used during the initial response phase.
 
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r safety_01_load_results_data}
+
+#| label: safety_01_load_results_data
+
+safety_01_results <- import_nemsqa_result(
+  measure = "Safety-01",
+  type = "r"
+)
+
+
+```
+
+```{r safety_01_table}
+
+#| label: safety_01_tables
+
+# create the safety-01 results table
+safety_01_results_gt <- safety_01_results |>
+  format_gt()
+
+# save the safety-01 results table
+gt::gtsave(
+  data = safety_01_results_gt,
+  filename = "safety_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/safety_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Safety-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -195,7 +287,38 @@ Iowa’s overall performance on Safety-01 shows that 28.5% (95% CI: 28.4%, 28.6%
 ## Safety-02
 Like Safety-01, this measure focuses on the transport phase, documenting cases in which lights and sirens were not used. 
 
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r safety_02_load_results_data}
+
+#| label: safety_02_load_results_data
+
+safety_02_results <- import_nemsqa_result(
+  measure = "Safety-02",
+  type = "r"
+)
+
+
+```
+
+```{r safety_02_table}
+
+#| label: safety_02_tables
+
+# create the safety-02 results table
+safety_02_results_gt <- safety_02_results |>
+  format_gt()
+
+# save the safety-02 results table
+gt::gtsave(
+  data = safety_02_results_gt,
+  filename = "safety_02_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/safety_02_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Safety-02 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -206,7 +329,38 @@ Iowa’s overall performance on Safety-02 shows that 70.5% (95% CI: 70.4%, 70.7%
 ## Trauma-01
 This measure evaluates whether a pain assessment was completed for patients with injuries.
 
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r trauma_01_load_results_data}
+
+#| label: trauma_01_load_results_data
+
+trauma_01_results <- import_nemsqa_result(
+  measure = "Trauma-01",
+  type = "r"
+)
+
+
+```
+
+```{r trauma_01_table}
+
+#| label: trauma_01_tables
+
+# create the trauma-01 results table
+trauma_01_results_gt <- trauma_01_results |>
+  format_gt()
+
+# save the trauma-01 results table
+gt::gtsave(
+  data = trauma_01_results_gt,
+  filename = "trauma_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/trauma_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Trauma-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -217,7 +371,38 @@ Iowa's performance in the Trauma-01 measure indicates a strong adherence to pain
 ## Trauma-03
 An outcome measure that tracks whether a decrease in pain score occurred during EMS transport.
 
-![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r trauma_03_load_results_data}
+
+#| label: trauma_03_load_results_data
+
+trauma_03_results <- import_nemsqa_result(
+  measure = "Trauma-03",
+  type = "r"
+)
+
+
+```
+
+```{r trauma_03_table}
+
+#| label: trauma_03_tables
+
+# create the trauma-03 results table
+trauma_03_results_gt <- trauma_03_results |>
+  format_gt()
+
+# save the trauma-03 results table
+gt::gtsave(
+  data = trauma_03_results_gt,
+  filename = "trauma_03_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/trauma_03_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Trauma-03 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -225,6 +410,7 @@ Iowa's performance in the Trauma-03 measure reveals significant room for improve
 
 :::
 
+<!-- introduce sections that resulted in less success -->
 # Gaps
 Here, we will review: 
  
@@ -250,6 +436,9 @@ Here, we will review:
 - Trauma-14 (Pre-Arrival Trauma Alerts) 
 - TTR-01 (Vital Signs for Non-Transported Patients) 
 - TBI-01 (Documentation of Key Physiological Parameters) 
+
+## Airway-01
+This outcome measure assesses the percentage of EMS responses initiated through a 911 call in which advanced airway placement was successful on the first attempt without documented episodes of hypotension or hypoxia during the peri-intubation period. 
 
 ```{r airway_01_load_results_data}
 
@@ -279,10 +468,7 @@ gt::gtsave(
 
 ```
 
-## Airway-01
-This outcome measure assesses the percentage of EMS responses initiated through a 911 call in which advanced airway placement was successful on the first attempt without documented episodes of hypotension or hypoxia during the peri-intubation period. 
-
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -293,7 +479,35 @@ Over the entire 2021–2024 period, the first-attempt advanced airway success wi
 ## Airway-05
 This process measure evaluates the proportion of intubation procedures in which adequate oxygenation was achieved prior to airway insertion.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r airway_05_load_results_data}
+
+#| label: airway_05_load_results_data
+
+airway_05_results <- import_nemsqa_result(measure = "Airway-05", type = "r")
+
+
+```
+
+```{r airway_05_table}
+
+#| label: airway_05_tables
+
+# create the airway-05 results table
+airway_05_results_gt <- airway_05_results |>
+  format_gt()
+
+# save the airway-05 results table
+gt::gtsave(
+  data = airway_05_results_gt,
+  filename = "airway_05_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/airway_05_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-05 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -304,7 +518,38 @@ Over the 2021–2024 period, Iowa’s EMS preoxygenation rate prior to intubatio
 ## Pediatrics-03b
 This measure focuses on the documentation of either actual weight in kilograms or length-based weight estimates for pediatric patients who receive weight-based medications.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r pediatrics_03b_load_results_data}
+
+#| label: pediatrics_03b_load_results_data
+
+pediatrics_03b_results <- import_nemsqa_result(
+  measure = "Pediatrics-03b",
+  type = "r"
+)
+
+
+```
+
+```{r pediatrics_03b_table}
+
+#| label: pediatrics_03b_tables
+
+# create the pediatrics-03b results table
+pediatrics_03b_results_gt <- pediatrics_03b_results |>
+  format_gt()
+
+# save the pediatrics-03b results table
+gt::gtsave(
+  data = pediatrics_03b_results_gt,
+  filename = "pediatrics_03b_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/pediatrics_03b_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Pediatrics-03b NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -315,7 +560,38 @@ Iowa’s performance on Pediatrics-03b shows that 74.0% (95% CI: 73.1%, 74.9%) o
 ## Respiratory-01
 This process measure evaluates whether EMS providers conducted a respiratory assessment for patients with a primary or secondary impression of respiratory distress. 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r respiratory_01_load_results_data}
+
+#| label: respiratory_01_load_results_data
+
+respiratory_01_results <- import_nemsqa_result(
+  measure = "Respiratory-01",
+  type = "r"
+)
+
+
+```
+
+```{r respiratory_01_table}
+
+#| label: respiratory_01_tables
+
+# create the respiratory-01 results table
+respiratory_01_results_gt <- respiratory_01_results |>
+  format_gt()
+
+# save the respiratory-01 results table
+gt::gtsave(
+  data = respiratory_01_results_gt,
+  filename = "respiratory_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/respiratory_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Respiratory-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -326,7 +602,38 @@ From 2021 to 2024, 90.1% (95% CI: 89.9%, 90.2%) of Iowa EMS encounters involving
 ## Respiratory-02
 This measure tracks oxygen administration for patients with documented hypoxia during EMS response. 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r respiratory_02_load_results_data}
+
+#| label: respiratory_02_load_results_data
+
+respiratory_02_results <- import_nemsqa_result(
+  measure = "Respiratory-02",
+  type = "r"
+)
+
+
+```
+
+```{r respiratory_02_table}
+
+#| label: respiratory_02_tables
+
+# create the respiratory-02 results table
+respiratory_02_results_gt <- respiratory_02_results |>
+  format_gt()
+
+# save the respiratory-02 results table
+gt::gtsave(
+  data = respiratory_02_results_gt,
+  filename = "respiratory_02_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/respiratory_02_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Respiratory-02 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -337,7 +644,38 @@ From 2021 to 2024, 45.3% (95% CI: 45.0%, 45.6%) of Iowa EMS encounters involving
 ## Safety-04
 This process measure tracks the use of appropriate pediatric restraint devices during EMS transport for patients under 8 years old. 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r safety_04_load_results_data}
+
+#| label: safety_04_load_results_data
+
+safety_04_results <- import_nemsqa_result(
+  measure = "Safety-04",
+  type = "r"
+)
+
+
+```
+
+```{r safety_04_table}
+
+#| label: safety_04_tables
+
+# create the safety-04 results table
+safety_04_results_gt <- safety_04_results |>
+  format_gt()
+
+# save the safety-04 results table
+gt::gtsave(
+  data = safety_04_results_gt,
+  filename = "safety_04_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/safety_04_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Safety-04 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -348,7 +686,38 @@ Iowa’s overall performance on Safety-04 indicates that 8.2% (95% CI: 7.9%, 8.5
 ## Seizure-02
 This process measure assesses the timely use of benzodiazepines in treating status epilepticus.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r seizure_02_load_results_data}
+
+#| label: seizure_02_load_results_data
+
+seizure_02_results <- import_nemsqa_result(
+  measure = "Seizure-02",
+  type = "r"
+)
+
+
+```
+
+```{r seizure_02_table}
+
+#| label: seizure_02_tables
+
+# create the seizure-02 results table
+seizure_02_results_gt <- seizure_02_results |>
+  format_gt()
+
+# save the seizure-02 results table
+gt::gtsave(
+  data = seizure_02_results_gt,
+  filename = "seizure_02_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/seizure_02_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Seizure-02 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -359,7 +728,38 @@ Statewide performance on Seizure-02 shows that 15.4% (95% CI: 14.7%, 16.1%) of E
 ## Stroke-01
 This measure ensures that stroke assessments are performed during EMS encounters when stroke is suspected.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r stroke_01_load_results_data}
+
+#| label: stroke_01_load_results_data
+
+stroke_01_results <- import_nemsqa_result(
+  measure = "Stroke-01",
+  type = "r"
+)
+
+
+```
+
+```{r stroke_01_table}
+
+#| label: stroke_01_tables
+
+# create the stroke-01 results table
+stroke_01_results_gt <- stroke_01_results |>
+  format_gt()
+
+# save the stroke-01 results table
+gt::gtsave(
+  data = stroke_01_results_gt,
+  filename = "stroke_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/stroke_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Stroke-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -370,7 +770,38 @@ Iowa’s statewide performance on Stroke-01 shows that 66.5% (95% CI: 65.9%, 67.
 ## Syncope-01
 This measure captures whether a 12-lead ECG was performed for patients presenting with syncope.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r syncope_01_load_results_data}
+
+#| label: syncope_01_load_results_data
+
+syncope_01_results <- import_nemsqa_result(
+  measure = "Syncope-01",
+  type = "r"
+)
+
+
+```
+
+```{r syncope_01_table}
+
+#| label: syncope_01_tables
+
+# create the syncope-01 results table
+syncope_01_results_gt <- syncope_01_results |>
+  format_gt()
+
+# save the syncope-01 results table
+gt::gtsave(
+  data = syncope_01_results_gt,
+  filename = "syncope_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/syncope_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Syncope-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -381,7 +812,38 @@ Iowa’s performance on Syncope-01 shows that 18.3% (95% CI: 17.9%, 18.6%) of ad
 ## TBI-01
 This measure requires the documentation of oxygen level, end-tidal CO₂ (ETCO₂), and systolic blood pressure during EMS transport of patients with suspected traumatic brain injury.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r tbi_01_load_results_data}
+
+#| label: tbi_01_load_results_data
+
+tbi_01_results <- import_nemsqa_result(
+  measure = "TBI-01",
+  type = "r"
+)
+
+
+```
+
+```{r tbi_01_table}
+
+#| label: tbi_01_tables
+
+# create the tbi-01 results table
+tbi_01_results_gt <- tbi_01_results |>
+  format_gt()
+
+# save the tbi-01 results table
+gt::gtsave(
+  data = tbi_01_results_gt,
+  filename = "tbi_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/tbi_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the TBI-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -392,7 +854,38 @@ Iowa’s performance on the TBI-01 measure remains low. The documentation rate w
 ## Trauma-04
 This process measure assesses whether patients meeting CDC trauma triage criteria were transported to an appropriate trauma center.
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r trauma_04_load_results_data}
+
+#| label: trauma_04_load_results_data
+
+trauma_04_results <- import_nemsqa_result(
+  measure = "Trauma-04",
+  type = "r"
+)
+
+
+```
+
+```{r trauma_04_table}
+
+#| label: trauma_04_tables
+
+# create the trauma-04 results table
+trauma_04_results_gt <- trauma_04_results |>
+  format_gt()
+
+# save the trauma-04 results table
+gt::gtsave(
+  data = trauma_04_results_gt,
+  filename = "trauma_04_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/trauma_04_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Trauma-04 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -400,10 +893,156 @@ Iowa’s performance in the Trauma-04 measure is substantially below expectation
 
 :::
 
+## Updated Trauma-04
+Presently, NEMSQA is updating Trauma-04 to abandon using the eDisposition.23 field and instead leveraging eDisposition.01 or eDisposition.02 due to high variability in eDisposition.23.
+
+::: {.notes}
+
+The problem is ultra-high variability in how eDisposition.23 is used. Most registries will allow services to define what capabilities each facility has, and so you can have your number of distinct hospital capabilities for each facility in a given jurisdiction equal to the number of services reporting to your registry times the number of hospital capability options in eDisposition.23, e.g.:
+
+$total = hospitals * ems * options$
+
+:::
+
+```{r new_trauma_04_table}
+
+#| label: new_trauma_04_table
+
+# this table was developed from a test process BEMTS conducted at the request of
+# NEMSQA to see how this measure would perform using eDisposition.01 or
+# eDisposition.02 as the source of the numerator data.
+new_trauma_04_data <- tibble::tibble(
+  INCIDENT_YEAR = rep(2021:2024, 3),
+  measure = "Trauma-04",
+  pop = rep(c(">= 65 yrs", "10-64 yrs", "< 10 yrs"), each = 4),
+  prop = as.numeric(c(
+    0.920,
+    0.932,
+    0.937,
+    0.942,
+    0.928,
+    0.933,
+    0.934,
+    0.929,
+    0.849,
+    0.851,
+    0.845,
+    0.811
+  )),
+  lower_ci = as.numeric(c(
+    0.916,
+    0.928,
+    0.933,
+    0.939,
+    0.924,
+    0.929,
+    0.930,
+    0.925,
+    0.821,
+    0.824,
+    0.818,
+    0.784
+  )),
+  upper_ci = as.numeric(c(
+    0.924,
+    0.935,
+    0.940,
+    0.945,
+    0.931,
+    0.936,
+    0.937,
+    0.932,
+    0.873,
+    0.875,
+    0.869,
+    0.836
+  ))
+)
+
+# make the new table into a gt table
+new_trauma_04_gt <- new_trauma_04_data |>
+  dplyr::rename_with(
+    # all columns to title case
+    ~ stringr::str_to_title(string = .)
+  ) |>
+  gt::gt() |>
+  gt::fmt_percent(
+    # % formatting for all proportions
+    columns = Prop:Upper_ci,
+    decimals = 2,
+    drop_trailing_zeros = TRUE
+  ) |>
+  gt::cols_label(
+    # change some names explicitly
+    Incident_year ~ "Year",
+    Pop ~ "Population",
+    Prop ~ "Performance"
+  ) |>
+  gt::cols_merge(
+    # merge proportion and corresponding binomial confidence intervals
+    columns = Prop:Upper_ci,
+    pattern = "{1} [{2}-{3}]"
+  ) |>
+  tab_style_hhs(
+    border_cols = 2:tidyselect::last_col(),
+    column_labels = 18,
+    body = 16
+  )
+
+# save the new trauma-04 table
+gt::gtsave(
+  data = new_trauma_04_gt,
+  filename = "new_trauma_04_gt.png",
+  path = "./figures/"
+)
+
+```
+
+## Updated Trauma-04
+
+![](figures/new_trauma_04_gt.png){fig-alt="A statistical table showing Iowa performance on the NEW Trauma-04 NEMSQA measure for the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Using eDisposition.02 (destination facility code) in place of eDisposition.23 (hospital capability)
+
+:::
+
 ## Trauma-08
 This measure evaluates whether the Glasgow Coma Scale (GCS), systolic blood pressure, and respiratory rate were documented in trauma patients. 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r trauma_08_load_results_data}
+
+#| label: trauma_08_load_results_data
+
+trauma_08_results <- import_nemsqa_result(
+  measure = "Trauma-08",
+  type = "r"
+)
+
+
+```
+
+```{r trauma_08_table}
+
+#| label: trauma_08_tables
+
+# create the trauma-08 results table
+trauma_08_results_gt <- trauma_08_results |>
+  format_gt()
+
+# save the trauma-08 results table
+gt::gtsave(
+  data = trauma_08_results_gt,
+  filename = "trauma_08_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/trauma_08_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -414,7 +1053,38 @@ Iowa's performance in the Trauma-08 measure, which evaluates the documentation o
 ## Trauma-14
 This measure tracks whether a pre-arrival trauma alert was activated for patients meeting field triage criteria (Steps 1 or 2). 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r trauma_14_load_results_data}
+
+#| label: trauma_08_load_results_data
+
+trauma_14_results <- import_nemsqa_result(
+  measure = "Trauma-14",
+  type = "r"
+)
+
+
+```
+
+```{r trauma_14_table}
+
+#| label: trauma_08_tables
+
+# create the trauma-08 results table
+trauma_14_results_gt <- trauma_14_results |>
+  format_gt()
+
+# save the trauma-08 results table
+gt::gtsave(
+  data = trauma_14_results_gt,
+  filename = "trauma_14_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/trauma_14_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Trauma-14 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
@@ -423,16 +1093,48 @@ Iowa's performance on the Trauma-14 measure, which tracks the initiation of pre-
 :::
 
 ## TTR-01
-This measure requires the documentation of oxygen level, end-tidal CO₂ (ETCO₂), and systolic blood pressure during EMS transport of patients with suspected traumatic brain injury.
+This process measure evaluates whether a basic set of vital signs was documented for patients not transported by EMS. 
 
-![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+```{r ttr_01_load_results_data}
+
+#| label: ttr_01_load_results_data
+
+ttr_01_results <- import_nemsqa_result(
+  measure = "TTR-01",
+  type = "r"
+)
+
+
+```
+
+```{r ttr_01_table}
+
+#| label: ttr_01_tables
+
+# create the ttr-01 results table
+ttr_01_results_gt <- ttr_01_results |>
+  format_gt()
+
+# save the ttr-01 results table
+gt::gtsave(
+  data = ttr_01_results_gt,
+  filename = "ttr_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+![](figures/ttr_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the TTR-01 NEMSQA measure for the years 2021-2024." fig-align="center"}
 
 ::: {.notes}
 
-Iowa’s performance on the TBI-01 measure remains low. The documentation rate was 12.62% for adults and 12.13% for pediatric patients. These rates are below the national comparison of 17% (2022), the State of Kansas performance of 15% (2022), and Virginia’s 2024 quarterly performance of 21–25%. Iowa’s rates indicate significant gaps in ensuring comprehensive physiological monitoring in TBI care during EMS transport.
+Iowa’s performance on the TTR-01 measure, which tracks documentation of vital signs for non-transported patients, is below national standards. The adult documentation rate was 52.16%, while the pediatric rate was 39.05%. These rates fall short of the national comparison of 70% (2022), the State of Kansas performance of 75% (2022), and Virginia’s 2024 quarterly performance of 64–76%. Iowa’s lower rates highlight a need for improved accountability and documentation practices in non-transport cases.
 
 :::
 
+<!-- this section presents a summary and conclusion -->
 # Takeaways
  
 - Demonstrates national leadership in **operational safety practices**
@@ -458,6 +1160,7 @@ Iowa’s performance on the TBI-01 measure remains low. The documentation rate w
   - Many EMS professionals record critical details only in **narratives**, not in **discrete data fields**
   - Transitioning from narrative-heavy to **structured documentation** is essential for valid performance measurement
 
+<!-- here we discuss what we do next -->
 # Strategic Priorities
 
 Iowa’s proven record of progress positions it well for **future EMS quality gains**
@@ -473,7 +1176,7 @@ Iowa’s proven record of progress positions it well for **future EMS quality ga
 - **Improve EMS data quality**: transition from narrative-heavy documentation to structured, discrete data fields for accurate performance measurement
 - Modernize and strengthen **EMS data infrastructure**
 
-
+<!-- info on how this report was generated -->
 # Analyses
 
 At BEMTS, we have been hard at work creating open source software that benefits Iowans and other jurisdictions.
@@ -482,8 +1185,10 @@ At BEMTS, we have been hard at work creating open source software that benefits 
 
 ![](figures/nemsqar_final.png){fig-align="center" fig-alt="QR Code for the traumar R statistical computing package GitHub repository."}
 
+<!-- initialize Q & A -->
 # Questions?
 
+<!-- thank the audience and provide contact info -->
 # Thanks!
 
 Nicolas Foss, Ed.D., MS
