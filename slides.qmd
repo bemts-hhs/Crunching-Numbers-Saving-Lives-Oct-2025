@@ -1,0 +1,230 @@
+---
+title: "Crunching Numbers, Saving Lives"
+author: "Nicolas Foss, Ed.D., MS"
+date: "2025-10-20"
+format: 
+  letterbox-revealjs:
+    output-file: index.html
+    theme: theme/custom.scss
+    footer: "Crunching Numbers, Saving Lives October 2025"
+    logo: figures/HHS_PH_horiz_color_print.jpg
+    transition: slide
+    menu: true
+    slide-number: false
+    self-contained: true
+    toc: false
+    code-overflow: wrap
+    notes: true
+    progress: false
+    title-slide-attributes:
+      class: title-slide
+      data-background-color: white
+      data-background-size: cover
+      data-background-position: center
+execute: 
+  echo: false
+  warning: false
+  message: false
+  eval: true
+  include: false
+---
+
+# Objectives
+
+Today we will look at... 
+ 
+- Reintroduce NEMSQA and its measures 
+- Iowa NEMSQA measure performance 2021-2024 
+- Discuss trends, geographic distribution 
+- Takeaways given performance, considerations of data limitations 
+
+::: {.notes}
+
+Make sure to mention that we are looking at aggregate data from 2021-2024.
+
+:::
+
+# Accessing this presentation
+
+![](figures/qrcode.svg){fig-align="center" fig-alt="QR Code for the slides to this presentation."}
+
+::: notes
+BEMTS epidemiologist (me) is the author and maintainer of the nemsqar packages 
+We used nemsqar to generate the statistics for this presentation  
+You can access the slides directly from the link above 
+Feel free to take a look at the slideshow while we are here!
+:::
+
+<!-- Setup -->
+
+```{r setup}
+
+#| label: setup
+
+# Get path to figures folder
+figures <- file.path("./figures/")
+
+# get base file path for all data import
+base_path <- Sys.getenv("base_file_path")
+
+# get file extension for result data import
+overall <- Sys.getenv("overall_extension")
+
+# get file extension for population data import
+population <- Sys.getenv("population_extension")
+
+# Get needed custom functions into memory
+source("R/setup.R")
+```
+
+# Achievements
+Here, we will review: 
+ 
+- Airway-18 (Waveform Capnography Use for Airway Confirmation) 
+- Asthma-01 (Beta Agonist Administration for Asthma) 
+- Hypoglycemia-01 (Treatment of Symptomatic Hypoglycemia) 
+- Safety-01 (Non-Use of Lights and Sirens During Response) 
+
+# Achievements
+Here, we will review: 
+ 
+- Safety-02 (Non-Use of Lights and Sirens During Transport) 
+- Trauma-01 (Pain Assessment in Trauma Patients) 
+- Trauma-03 (Pain Reduction Achieved) 
+
+```{r airway_18_load_results_data}
+
+#| label: airway_01_load_results_data
+
+airway_18_results <- import_nemsqa_result(measure = "Airway-18", type = "r")
+
+
+```
+
+```{r airway_18_table}
+
+#| label: airway_01_tables
+
+# create the airway-01 results table
+airway_18_results_gt <- airway_18_results |>
+  format_gt()
+
+# save the airway-01 results table
+gt::gtsave(
+  data = airway_18_results_gt,
+  filename = "airway_18_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+## Airway-18
+This process measure tracks the use of waveform capnography for confirming and monitoring advanced airway placement. 
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s EMS use of waveform capnography for advanced airway confirmation from 2021 to 2024 was 32.9% (95% CI: 31.9%, 33.9%) among adults and 29.0% (95% CI: 24.0%, 34.5%) among pediatric patients. Overall adherence to this critical airway safety practice remains low in both populations, with rates well below expectations for standard airway management. The State of Kansas estimates national performance at 3% for 2022. Compared to available state-level data—Iowa’s performance exceeds 8% reported in Kansas (2022) and the quarterly 14–17% reported by Virginia during 2024. While Iowa demonstrates relatively higher adoption than these peers, its performance still reflects a substantial gap relative to clinical guidelines recommending universal use of waveform capnography in advanced airway management.
+
+:::
+
+
+# Gaps
+Here, we will review: 
+ 
+- Airway-01 (First-Attempt Advanced Airway Success) 
+- Airway-05 (Preoxygenation Prior to Intubation) 
+- Pediatrics-03b (Documentation of Weight for Weight-Based Medications) 
+- Respiratory-01 (Assessment of Respiratory Distress) 
+- Respiratory-02 (Oxygen Administration for Hypoxia) 
+
+# Gaps
+...in addition:
+ 
+- Safety-04 (Pediatric Restraint Use During Transport) 
+- Seizure-02 (Benzodiazepine Administration for Status Epilepticus) 
+- Stroke-01 (Stroke Assessment in Suspected Stroke Patients) 
+- Syncope-01 (ECG Performed for Syncope) 
+- TBI-01 (Documentation of Key Physiological Parameters) 
+
+# Gaps
+...along with: 
+ 
+- Trauma-04 (Transport to a Trauma Center) 
+- Trauma-08 (Trauma Vital Signs Documentation) 
+- Trauma-14 (Pre-Arrival Trauma Alerts) 
+- TTR-01 (Vital Signs for Non-Transported Patients) 
+
+```{r airway_01_load_results_data}
+
+#| label: airway_01_load_results_data
+
+airway_01_results <- import_nemsqa_result(measure = "Airway-01", type = "r")
+
+
+```
+
+```{r airway_01_table}
+
+#| label: airway_01_tables
+
+# create the airway-01 results table
+airway_01_results_gt <- airway_01_results |>
+  format_gt()
+
+# save the airway-01 results table
+gt::gtsave(
+  data = airway_01_results_gt,
+  filename = "airway_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+## Airway-01
+This outcome measure assesses the percentage of EMS responses initiated through a 911 call in which advanced airway placement was successful on the first attempt without documented episodes of hypotension or hypoxia during the peri-intubation period. 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Over the entire 2021–2024 period, the first-attempt advanced airway success without adverse effects among adults in Iowa was 7.7% (95% CI: 6.7%, 8.8%). This consistently low rate indicates that successful, complication-free intubation on the first attempt is uncommon in this population. For pediatric patients, the overall success rate was 11.9% (95% CI: 7.2%, 18.9%), but wide confidence intervals reflect small sample sizes, limiting certainty. While pediatric performance appears slightly higher, both groups demonstrate substantial opportunities for improvement in airway management practices. National overall performance was 21.4% (21.2% adult, 28.9% peds) for 2023.
+
+:::
+
+# Takeaways
+
+::: incremental
+
+
+
+:::
+
+# Analyses
+
+At BEMTS, we have been hard at work creating open source software that benefits Iowans and other jurisdictions.
+
+`{nemsqar}` package page
+
+![](figures/nemsqar_final.png){fig-align="center" fig-alt="QR Code for the traumar R statistical computing package GitHub repository."}
+
+# Questions?
+
+# Thanks!
+
+Nicolas Foss, Ed.D., MS
+
+Epidemiologist
+
+Bureau of Emergency Medical and Trauma Services
+
+Bureau of Health Statistics
+
+Division of Public Health \> Iowa HHS
+
+C: 515.985.9627 \|\| E: nicolas.foss at hhs.iowa.gov
