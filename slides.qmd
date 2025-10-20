@@ -60,6 +60,21 @@ You can access the slides directly from the link above
 Feel free to take a look at the slideshow while we are here!
 :::
 
+# Statistics
+ 
+- All performance estimates are calculated as a percentage
+- 95% confidence intervals are shown beside each estimate in brackets []
+- Confidence intervals(CIs) help us infer what true performance might look like with more data
+- CIs say "If we repeat the same data collection again 1,000 times, 95% of the results would fall in this interval."
+
+::: {.notes}
+
+Note that 95% confidence intervals do not tell us how "confident" we are. Statistics is not about emotions!
+It is all about inferring where we might expect true performance to be if we had more information.
+This is a way to better understand the data given observed error.
+
+:::
+
 <!-- introduce NEMSQA -->
 # NEMSQA, what?
  
