@@ -131,6 +131,99 @@ Iowa’s EMS use of waveform capnography for advanced airway confirmation from 2
 
 :::
 
+```{r asthma_01_load_results_data}
+
+#| label: airway_01_load_results_data
+
+asthma_01_results <- import_nemsqa_result(measure = "Asthma-01", type = "r")
+
+
+```
+
+```{r asthma_01_table}
+
+#| label: airway_01_tables
+
+# create the airway-01 results table
+asthma_01_results_gt <- asthma_01_results |>
+  format_gt()
+
+# save the airway-01 results table
+gt::gtsave(
+  data = asthma_01_results_gt,
+  filename = "asthma_01_results_gt.png",
+  vwidth = 1200,
+  vheight = 800,
+  path = "figures/"
+)
+
+```
+
+## Asthma-01
+This process measure monitors the administration of aerosolized beta agonists during EMS responses for patients diagnosed with asthma. 
+
+![](figures/asthma_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Asthma-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+From 2021 to 2024, Iowa’s EMS administered aerosolized beta agonists to 56.4% (95% CI: 55.1%, 57.8%) of patients diagnosed with asthma. Adult patients received treatment at a rate of 58.0% (95% CI: 56.5%, 59.4%), while pediatric patients were treated at a rate of 50.4% (95% CI: 47.0%, 53.8%). Compared to the 53% national performance reported for 2023 through early 2025, Iowa’s overall rate is moderately higher, particularly driven by stronger performance among adults.
+
+:::
+
+## Hypoglycemia-01
+This measure captures the percentage of patients with symptomatic hypoglycemia who receive corrective treatment.
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+From 2021 to 2024, 62.3% (95% CI: 61.3%, 63.2%) of Iowa EMS patients with symptomatic hypoglycemia received corrective treatment. Adult patients were treated at a rate of 62.6% (95% CI: 61.7%, 63.5%), while pediatric patients had a treatment rate of 58.5% (95% CI: 49.0%, 67.4%). Compared to the 39% national performance during 2023 through early 2025, Iowa’s EMS demonstrated substantially higher adherence to hypoglycemia treatment protocols. These results suggest that Iowa EMS consistently outperformed national rates in this critical area of prehospital care. 
+
+:::
+
+## Safety-01
+This measure captures the percentage of EMS responses where lights and sirens were not used during the initial response phase.
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s overall performance on Safety-01 shows that 28.5% (95% CI: 28.4%, 28.6%) of EMS responses were conducted without the use of lights and sirens. This rate exceeds the national comparison of 17% for 2023 through early 2025, indicating stronger adherence in Iowa to safety practices that reduce risk for EMS providers and the public. Both adult and pediatric populations in Iowa demonstrate higher rates of non-use compared to national trends. 
+
+:::
+
+## Safety-02
+Like Safety-01, this measure focuses on the transport phase, documenting cases in which lights and sirens were not used. 
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s overall performance on Safety-02 shows that 70.5% (95% CI: 70.4%, 70.7%) of EMS transports were conducted without the use of lights and sirens. This performance exceeds the national comparison of 59% for 2023 through early 2025. Both adult and pediatric populations in Iowa are outperforming national rates, with adults slightly higher at 70.9% and pediatrics at 65.7%.
+
+:::
+
+## Trauma-01
+This measure evaluates whether a pain assessment was completed for patients with injuries.
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa's performance in the Trauma-01 measure indicates a strong adherence to pain assessment protocols. For adults, the pain assessment completion rate was 74.26%, while for pediatric patients, it was 74.16%. Overall, the combined rate for all patients was 74.14%. These results surpass the national comparison rate of 70% for the years 2023 through early 2025. However, there is still room for improvement to ensure even higher compliance and better patient outcomes.
+
+:::
+
+## Trauma-03
+An outcome measure that tracks whether a decrease in pain score occurred during EMS transport.
+
+![](figures/airway_18_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-18 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa's performance in the Trauma-03 measure reveals significant room for improvement. For adults, the pain reduction rate was only 22.43%, and for pediatric patients, it was slightly better at 28.12%. Overall, the combined rate for all patients was 22.78%. Although these results are above the national comparison rate of 19% for the years 2023 through early 2025, they still indicate that pain management interventions during transport need substantial enhancement.
+
+:::
 
 # Gaps
 Here, we will review: 
@@ -148,7 +241,6 @@ Here, we will review:
 - Seizure-02 (Benzodiazepine Administration for Status Epilepticus) 
 - Stroke-01 (Stroke Assessment in Suspected Stroke Patients) 
 - Syncope-01 (ECG Performed for Syncope) 
-- TBI-01 (Documentation of Key Physiological Parameters) 
 
 # Gaps
 ...along with: 
@@ -157,6 +249,7 @@ Here, we will review:
 - Trauma-08 (Trauma Vital Signs Documentation) 
 - Trauma-14 (Pre-Arrival Trauma Alerts) 
 - TTR-01 (Vital Signs for Non-Transported Patients) 
+- TBI-01 (Documentation of Key Physiological Parameters) 
 
 ```{r airway_01_load_results_data}
 
@@ -197,13 +290,189 @@ Over the entire 2021–2024 period, the first-attempt advanced airway success wi
 
 :::
 
-# Takeaways
+## Airway-05
+This process measure evaluates the proportion of intubation procedures in which adequate oxygenation was achieved prior to airway insertion.
 
-::: incremental
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
 
+::: {.notes}
 
+Over the 2021–2024 period, Iowa’s EMS preoxygenation rate prior to intubation was 19.3% (95% CI: 17.9%, 20.7%) for adults and 36.5% (95% CI: 29.5%, 43.9%) for pediatric patients. Compared to the national performance (for 2023) of 25.5% overall (25.1% for adults and 36.5% for pediatrics), Iowa’s adult performance is notably lower, indicating a statewide gap in adherence to this evidence-based safety practice. Pediatric performance in Iowa aligns closely with the national average, though the wide confidence interval reflects smaller case volumes. These findings highlight a need for targeted improvement in preoxygenation practices among adults in Iowa EMS. 
 
 :::
+
+## Pediatrics-03b
+This measure focuses on the documentation of either actual weight in kilograms or length-based weight estimates for pediatric patients who receive weight-based medications.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s performance on Pediatrics-03b shows that 74.0% (95% CI: 73.1%, 74.9%) of pediatric EMS encounters involving weight-based medications included documented weight or a length-based estimate. This is notably below the 82% national rate reported for 2022 and falls significantly short of the 94% reported by Kansas (2022). Iowa’s rate is, however, substantially higher than Kentucky’s 60% (2020-2021) and somewhat better than Virginia’s (2024) quarterly range of 63–66%.
+
+:::
+
+## Respiratory-01
+This process measure evaluates whether EMS providers conducted a respiratory assessment for patients with a primary or secondary impression of respiratory distress. 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+From 2021 to 2024, 90.1% (95% CI: 89.9%, 90.2%) of Iowa EMS encounters involving respiratory distress included a documented respiratory assessment. Adults had a performance rate of 90.9% (95% CI: 90.8%, 91.1%), while pediatric patients were assessed 82.6% (95% CI: 81.7%, 83.4%) of the time. Compared to the 93.6% national performance during 2023, Iowa’s overall rate was slightly lower, particularly driven by lower pediatric assessment rates. Nonetheless, Iowa’s EMS demonstrated strong adherence to this foundational clinical practice.
+
+:::
+
+## Respiratory-02
+This measure tracks oxygen administration for patients with documented hypoxia during EMS response. 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+From 2021 to 2024, 45.3% (95% CI: 45.0%, 45.6%) of Iowa EMS encounters involving documented hypoxia included oxygen administration. Performance was slightly higher among adults (45.6%, 95% CI: 45.3%, 45.9%) than pediatric patients (40.1%, 95% CI: 38.3%, 41.9%). Iowa’s statewide performance is modestly lower than the 46.8% national rate (2023; adults 47.1%, peds 36.4%), and slightly below Kansas’ own rate (50%; 2022). However, Iowa outperformed Virginia’s rates across all quarters of 2024, which ranged from 34% to 36%.
+
+:::
+
+## Safety-04
+This process measure tracks the use of appropriate pediatric restraint devices during EMS transport for patients under 8 years old. 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s overall performance on Safety-04 indicates that 8.2% (95% CI: 7.9%, 8.5%) of pediatric EMS transports for children under 8 years of age included appropriate restraint use. This rate is below the national benchmark of 13% calculated by the State of Kansas for 2022. Iowa’s rate is slightly lower than Kansas’s own 12% performance and aligns closely with Virginia’s quarterly range of 10–11% in 2024.
+
+:::
+
+## Seizure-02
+This process measure assesses the timely use of benzodiazepines in treating status epilepticus.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Statewide performance on Seizure-02 shows that 15.4% (95% CI: 14.7%, 16.1%) of EMS encounters for status epilepticus in Iowa resulted in benzodiazepine administration. Rates were comparable across populations: 15.5% for adults and 15.1% for pediatric patients. This is markedly lower than the 31% national benchmark reported for 2023 through early 2025, suggesting underutilization relative to evidence-based care expectations.
+
+:::
+
+## Stroke-01
+This measure ensures that stroke assessments are performed during EMS encounters when stroke is suspected.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s statewide performance on Stroke-01 shows that 66.5% (95% CI: 65.9%, 67.1%) of EMS encounters for suspected stroke included a documented stroke assessment. While this reflects gradual progress over time, Iowa remains notably below the 80% national average reported for 2023 through early 2025. This performance gap suggests room for substantial improvement in standardizing stroke care assessment practices.
+
+:::
+
+## Syncope-01
+This measure captures whether a 12-lead ECG was performed for patients presenting with syncope.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s performance on Syncope-01 shows that 18.3% (95% CI: 17.9%, 18.6%) of adult EMS encounters for syncope included a documented 12-lead ECG, with pediatric performance notably lower at 5.9% (95% CI: 5.0%, 6.8%). Compared to the 28% national rate for 2022 calculated by State of Kansas, Iowa falls well short of the 42% reported for the State of Kansas and undershoots Virginia quarterly performance in 2024 ranging from 27% to 31%.  These findings underscore a substantial opportunity for improvement in aligning with national practice standards.
+
+:::
+
+## TBI-01
+This measure requires the documentation of oxygen level, end-tidal CO₂ (ETCO₂), and systolic blood pressure during EMS transport of patients with suspected traumatic brain injury.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s performance on the TBI-01 measure remains low. The documentation rate was 12.62% for adults and 12.13% for pediatric patients. These rates are below the national comparison of 17% (2022), the State of Kansas performance of 15% (2022), and Virginia’s 2024 quarterly performance of 21–25%. Iowa’s rates indicate significant gaps in ensuring comprehensive physiological monitoring in TBI care during EMS transport.
+
+:::
+
+## Trauma-04
+This process measure assesses whether patients meeting CDC trauma triage criteria were transported to an appropriate trauma center.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s performance in the Trauma-04 measure is substantially below expectations. For patients aged 65 and older, the transport rate was only 1.99%. Among patients aged 10–64 years, the rate was slightly higher at 2.30%, and for patients under 10 years, it was 2.79%. These rates are significantly lower than the national benchmark of 13%, as well as peer state performance including Kansas (18%; 2022), Kentucky (27%; 2020–2021), and Virginia (11–15%; 2024). 
+
+:::
+
+## Trauma-08
+This measure evaluates whether the Glasgow Coma Scale (GCS), systolic blood pressure, and respiratory rate were documented in trauma patients. 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa's performance in the Trauma-08 measure, which evaluates the documentation of trauma vital signs, shows mixed results. For adults, the documentation rate was 90.92%, which is slightly below the national comparison rate of 92% for the years 2023 through early 2025. For pediatric patients, the documentation rate was 82.17%, significantly lower than the national average. These results indicate that while Iowa is close to the national benchmark for adults, there is a need for improvement, especially in pediatric cases.
+
+:::
+
+## Trauma-14
+This measure tracks whether a pre-arrival trauma alert was activated for patients meeting field triage criteria (Steps 1 or 2). 
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa's performance on the Trauma-14 measure, which tracks the initiation of pre-arrival trauma alerts, is notably low. For patients aged 65 and older, the alert activation rate was only 3.26%. For those aged 10-64 years, it was slightly better at 8.87%, and for patients under 10 years, it was 9.54%. These rates are significantly below the national comparison of 14% (2022), as well as the performance rates of other states such as Kansas (14%; 2022) and Virginia (9%-12%, 2024).
+
+:::
+
+## TTR-01
+This measure requires the documentation of oxygen level, end-tidal CO₂ (ETCO₂), and systolic blood pressure during EMS transport of patients with suspected traumatic brain injury.
+
+![](figures/airway_01_results_gt.png){fig-alt="A statistical table showing Iowa performance on the Airway-01 NEMSQA measurefor the years 2021-2024." fig-align="center"}
+
+::: {.notes}
+
+Iowa’s performance on the TBI-01 measure remains low. The documentation rate was 12.62% for adults and 12.13% for pediatric patients. These rates are below the national comparison of 17% (2022), the State of Kansas performance of 15% (2022), and Virginia’s 2024 quarterly performance of 21–25%. Iowa’s rates indicate significant gaps in ensuring comprehensive physiological monitoring in TBI care during EMS transport.
+
+:::
+
+# Takeaways
+ 
+- Demonstrates national leadership in **operational safety practices**
+  - Significant reduction in **lights and sirens** use during both response and transport 
+- Leads peer states in **waveform capnography adoption** 
+
+# Takeaways
+ 
+- Excels in **clinical care performance** 
+  - Strong results in **asthma treatment** and **hypoglycemia management** 
+  - Slightly exceeds national averages in **trauma pain assessment** 
+- Evidence of a strong **commitment to quality improvement** across agencies 
+
+# Takeaways
+ 
+- **Key gaps** in clinical performance:
+  - Airway management, trauma triage, stroke care, seizure treatment, syncope evaluation
+  - Persistent **pediatric care and documentation deficiencies**
+
+# Takeaways
+ 
+- **Data completeness** and accuracy remain limiting factors for system improvement
+  - Many EMS professionals record critical details only in **narratives**, not in **discrete data fields**
+  - Transitioning from narrative-heavy to **structured documentation** is essential for valid performance measurement
+
+# Strategic Priorities
+
+Iowa’s proven record of progress positions it well for **future EMS quality gains**
+
+- Expand clinical education and simulation-based training
+- Reinforce standardized EMS protocols statewide
+- Address **pediatric care disparities** directly
+
+# Strategic Priorities
+
+Iowa’s proven record of progress positions it well for **future EMS quality gains**
+
+- **Improve EMS data quality**: transition from narrative-heavy documentation to structured, discrete data fields for accurate performance measurement
+- Modernize and strengthen **EMS data infrastructure**
+
 
 # Analyses
 
